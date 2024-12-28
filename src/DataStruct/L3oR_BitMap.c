@@ -30,6 +30,7 @@ BitMap_st *BitMap_Create(int iBitsSize)
 
 	if (pBitMap->pByteArray == NULL)
 	{
+		free(pBitMap);
 		return NULL;
 	}
 
@@ -56,16 +57,18 @@ int BitMap_Init(BitMap_st *pBitMap, uint8_t *pByteArray, int iBytesSize)
 	return L3oR_ERROR_NONE;
 }
 
-
 void BitMap_Free(BitMap_st *pBitMap)
 {
     if (pBitMap != NULL)
     {
+		if (pBitMap->pByteArray != NULL)
+		{
+			free(pBitMap->pByteArray);
+		}
         free(pBitMap);
         pBitMap = NULL;
     }
 }
-
 
 static int BitMap_BitOperation(BitMap_st *pBitMap, int iBitPos, int iStat)
 {
