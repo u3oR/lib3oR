@@ -59,15 +59,15 @@ int BitMap_Init(BitMap_st *pBitMap, uint8_t *pByteArray, int iBytesSize)
 
 void BitMap_Free(BitMap_st *pBitMap)
 {
-    if (pBitMap != NULL)
-    {
+	if (pBitMap != NULL)
+	{
 		if (pBitMap->pByteArray != NULL)
 		{
 			free(pBitMap->pByteArray);
 		}
-        free(pBitMap);
-        pBitMap = NULL;
-    }
+		free(pBitMap);
+		pBitMap = NULL;
+	}
 }
 
 static int BitMap_BitOperation(BitMap_st *pBitMap, int iBitPos, int iStat)
@@ -189,12 +189,15 @@ static int BitMap_CountStat(BitMap_st *pBitMap, int iStat)
 {
 	int iCount = 0;
 	
-	for (int i = 0; i < pBitMap->iBitsSize; i++) 
+	for (int i = 0; i < pBitMap->iBytesSize; i++) 
 	{
-        if (iStat == BitMap_ReadBit(pBitMap, i)) 
+		for (int j = 0; j < 8; j++)
 		{
-            iCount++;
-        }
+			if (iStat == ((pBitMap->pByteArray[i] >> j) & 0x01U))
+			{
+				iCount++;
+			}
+		}
     }
     return iCount;
 }

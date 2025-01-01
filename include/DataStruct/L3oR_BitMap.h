@@ -7,6 +7,8 @@
 extern "C" {
 #endif
 
+#include "L3oR.h"
+
 typedef struct {
 	int iBitsSize;
 	int iBytesSize;
@@ -14,20 +16,20 @@ typedef struct {
 } BitMap_st;
 
 
-BitMap_st *BitMap_Create(int iBitsSize);
-void BitMap_Free(BitMap_st *pBitMap);
-int BitMap_Init(BitMap_st *pBitMap, uint8_t *pByteArray, int iBytesSize);
-int BitMap_SetBit(BitMap_st *pBitMap, int iBitPos);
-int BitMap_RstBit(BitMap_st *pBitMap, int iBitPos);
-int BitMap_ReadBit(BitMap_st *pBitMap, int iBitPos);
-int BitMap_SetBits(BitMap_st *pBitMap, int iPosStart, int iPosEnd);
-int BitMap_RstBits(BitMap_st *pBitMap, int iPosStart, int iPosEnd);
-int BitMap_GetFirstSet(BitMap_st *pBitMap);
-int BitMap_GetFirstRst(BitMap_st *pBitMap);
-int BitMap_GetCountSet(BitMap_st *pBitMap);
-int BitMap_GetCountRst(BitMap_st *pBitMap);
-int BitMap_GetBitsSize(BitMap_st *pBitMap);
-int BitMap_GetBytesSize(BitMap_st *pBitMap);
+L3oR_API BitMap_st *BitMap_Create(int iBitsSize);
+L3oR_API void BitMap_Free(BitMap_st *pBitMap);
+L3oR_API int BitMap_Init(BitMap_st *pBitMap, uint8_t *pByteArray, int iBytesSize);
+L3oR_API int BitMap_SetBit(BitMap_st *pBitMap, int iBitPos);
+L3oR_API int BitMap_RstBit(BitMap_st *pBitMap, int iBitPos);
+L3oR_API int BitMap_ReadBit(BitMap_st *pBitMap, int iBitPos);
+L3oR_API int BitMap_SetBits(BitMap_st *pBitMap, int iPosStart, int iPosEnd);
+L3oR_API int BitMap_RstBits(BitMap_st *pBitMap, int iPosStart, int iPosEnd);
+L3oR_API int BitMap_GetFirstSet(BitMap_st *pBitMap);
+L3oR_API int BitMap_GetFirstRst(BitMap_st *pBitMap);
+L3oR_API int BitMap_GetCountSet(BitMap_st *pBitMap);
+L3oR_API int BitMap_GetCountRst(BitMap_st *pBitMap);
+L3oR_API int BitMap_GetBitsSize(BitMap_st *pBitMap);
+L3oR_API int BitMap_GetBytesSize(BitMap_st *pBitMap);
 
 #ifdef __cplusplus
 }
